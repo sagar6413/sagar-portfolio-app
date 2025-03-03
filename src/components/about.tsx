@@ -38,28 +38,28 @@ const About = () => {
 
   const features = [
     {
-      icon: Server,
+      icon: Server, // Or a more specific icon like a Spring Boot icon
       title: "Backend Development",
       description:
-        "Architecting robust, hyperscalable backend ecosystems with Node.js, Express, and MongoDB.",
+        "Architecting robust, scalable backend systems using Java, Spring Boot, and related technologies (Spring Cloud, Spring Data JPA).  Experience with both monolithic and microservices architectures.",
     },
     {
-      icon: Database,
-      title: "Database Design",
+      icon: Database,  // Or icons for specific databases like PostgreSQL, MongoDB
+      title: "Database Design & Management",
       description:
-        "Crafting ultra-efficient database schemas with optimized query performance for next-gen applications.",
+        "Designing and implementing efficient database schemas using PostgreSQL, Oracle, and MongoDB.  Proficient in optimizing queries, ensuring data integrity, and utilizing caching strategies (Redis).",
     },
     {
-      icon: Cpu,
-      title: "Microservices",
+      icon: Cpu, // Or a distributed systems icon
+      title: "Microservices & Distributed Systems",
       description:
-        "Implementing cutting-edge microservice architectures for infinitely scalable distributed systems.",
+        "Developing and deploying microservices using Spring Boot and Spring Cloud.  Experience with message queues (Kafka, RabbitMQ) for building resilient and scalable distributed systems.",
     },
     {
-      icon: Globe,
+      icon: Globe, // Or an API-specific icon
       title: "API Development",
       description:
-        "Engineering seamless RESTful and GraphQL APIs with real-time capabilities and comprehensive documentation.",
+        "Engineering RESTful APIs using Spring Boot and adhering to best practices.  Experience with authentication/authorization (OAuth 2.0, JWT) and real-time communication (WebSockets/STOMP).",
     },
   ];
 
@@ -80,10 +80,10 @@ const About = () => {
           transition={{ duration: 0.7 }}
         >
           <h2 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
-            Backend Engineer with a Vision for Future Systems
+            Backend Engineer with a Vision
           </h2>
 
-          <p className="text-muted-foreground/80 max-w-3xl mx-auto text-sm font-light leading-normal tracking-wide mt-2">
+          <p className="text-muted-foreground/80 max-w-3xl mx-auto text-sm font-medium leading-normal tracking-wide mt-2">
             I specialize in crafting resilient backend architectures that power
             the next generation of web applications. With a focus on
             performance-optimized engineering and elegant architecture, I build
@@ -103,17 +103,17 @@ const About = () => {
               {
                 title: "My Journey",
                 content:
-                  "With over 5 years of experience in backend development, I've worked on a spectrum of projects from cutting-edge startups to enterprise-scale applications. My journey began with a vision for creating ultra-efficient systems that handle complex business logic while maintaining exceptional performance.",
+                  "As a backend engineer with nearly 3 years of experience (starting June 2022), I've contributed to diverse projects, including production systems at LTIMindtree and an internship at Mindtree.  My focus has been on developing and optimizing backend systems using Java and the Spring framework, addressing challenges in scalability, reliability, and performance.",
               },
               {
                 title: "My Approach",
                 content:
-                  "I believe in crafting clean, maintainable code that follows advanced architectural patterns. My philosophy centers on designing adaptive systems that evolve organically with changing requirements while ensuring maximum reliability and breakthrough performance.",
+                  "I prioritize writing clean, maintainable, and well-documented code that adheres to design patterns and best practices.  I'm experienced in both monolithic and microservices architectures, and I strive to build systems that are robust, scalable, and easy to understand.  I'm also a strong proponent of Agile/Scrum methodologies.",
               },
               {
                 title: "My Goal",
                 content:
-                  "My mission is to engineer backend ecosystems that not only exceed current requirements but are primed for exponential future growth. I aim to create solutions that are impenetrable, lightning-fast, and elegantly efficient, providing the foundation for next-generation applications.",
+                  "My goal is to build high-performance, reliable backend systems that meet and exceed current requirements while remaining adaptable to future growth.  I'm passionate about leveraging technologies like Spring Boot, Kafka, and Redis to create efficient and scalable solutions. I aim to contribute to the development of robust and innovative applications.",
               },
             ].map((section, idx) => (
               <motion.div
@@ -121,7 +121,7 @@ const About = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
                 transition={{ duration: 0.6, delay: 0.4 + idx * 0.1 }}
-                className="relative backdrop-blur-md bg-background/10 rounded-xl border border-primary/10 p-3 shadow-xl shadow-primary/5 overflow-hidden group"
+                className="relative backdrop-blur-md bg-background/10 rounded-xl border border-primary/10 p-10 shadow-xl shadow-primary/5 overflow-hidden group"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 <div className="absolute -left-1 top-0 w-1 h-full bg-gradient-to-b from-primary/40 via-primary to-primary/40" />
@@ -142,15 +142,16 @@ const About = () => {
               className="flex flex-wrap gap-2 mt-4"
             >
               {[
-                "Node.js",
-                "Express",
-                "MongoDB",
-                "AWS",
+                "Java",
+                "Spring Boot",              
+                "SQL + NoSQL DB",
+                "Redis", 
+                "Microservices Architecture",
+                "Kafka",
                 "Docker",
-                "Kubernetes",
-                "GraphQL",
-                "REST API",
-                "Microservices",
+                "JWT/ OAuth2 Authentication",
+                "Spring Cloud", // Or more specific: "Spring Cloud (Config, Gateway)"
+                "Agile/Scrum" // Methodology is a valuable skill
               ].map((skill, index) => (
                 <Badge
                   key={index}

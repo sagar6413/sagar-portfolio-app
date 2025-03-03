@@ -8,6 +8,8 @@ import {
   Atom,
   Cpu,
   Zap,
+  Database,
+  PlusCircle,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
@@ -39,7 +41,7 @@ export default function Projects() {
     };
   }, []);
 
-  // Animation variants
+  // Animation variants (adjusted for flexbox)
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -81,116 +83,98 @@ export default function Projects() {
 
   const projects = [
     {
-      title: "Quantum Microservices",
+      title: "Real-Time Chat Application",
       description:
-        "Designed and implemented a next-gen microservices architecture for an e-commerce platform handling 10,000+ daily transactions with auto-scaling.",
-      icon: Server,
+        "Developed a scalable real-time chat application backend using Spring Boot and WebSockets (STOMP).  Features include message delivery guarantees (RabbitMQ), presence status, group chat, and real-time notifications.  Implemented secure API access and authentication with JWT/OAuth2.",
+      icon: Code, // Or a chat-specific icon
       tags: [
         "Java",
         "Spring Boot",
-        "Kafka",
+        "WebSockets (STOMP)",
+        "RabbitMQ",
         "PostgreSQL",
-        "Docker",
-        "Kubernetes",
-      ],
-      color: "from-violet-500/90 to-indigo-600/90",
-      gradient:
-        "bg-gradient-radial from-violet-500/20 via-violet-500/5 to-transparent",
-      accent: "border-violet-500/20",
-      hoverAccent: "group-hover:border-violet-500/60",
-      glow: "drop-shadow-[0_0_15px_rgba(124,58,237,0.5)]",
-      stats: { throughput: "10K+", uptime: "99.99%", instances: 24 },
-    },
-    {
-      title: "Neural Analytics API",
-      description:
-        "Built a high-performance API utilizing AI algorithms for real-time data analytics processing 5M+ events daily with sub-second response times.",
-      icon: Atom,
-      tags: ["Python", "FastAPI", "Redis", "TimescaleDB", "AWS", "TensorFlow"],
-      color: "from-cyan-500/90 to-blue-600/90",
-      gradient:
-        "bg-gradient-radial from-cyan-500/20 via-cyan-500/5 to-transparent",
-      accent: "border-cyan-500/20",
-      hoverAccent: "group-hover:border-cyan-500/60",
-      glow: "drop-shadow-[0_0_15px_rgba(6,182,212,0.5)]",
-      stats: { throughput: "5M+", latency: "<100ms", nodes: 12 },
-    },
-    {
-      title: "Quantum Authentication",
-      description:
-        "Developed a secure, OAuth2-compliant authentication service with biometric verification, multi-factor authentication and zero-knowledge proof technology.",
-      icon: Terminal,
-      tags: [
-        "Node.js",
-        "Express",
+        "Redis",
         "JWT",
-        "MongoDB",
-        "Docker",
-        "Zero-Knowledge",
+        "OAuth2",
       ],
-      color: "from-emerald-500/90 to-teal-600/90",
+      color: "from-emerald-500/90 to-teal-600/90", // Example color
       gradient:
         "bg-gradient-radial from-emerald-500/20 via-emerald-500/5 to-transparent",
       accent: "border-emerald-500/20",
       hoverAccent: "group-hover:border-emerald-500/60",
       glow: "drop-shadow-[0_0_15px_rgba(16,185,129,0.5)]",
-      stats: { users: "500K+", protocols: 6, mfa: "99.8%" },
+      stats: { users: "Simulated", messages: "High Volume", latency: "Low" }, // Add quantifiable data if available
     },
     {
-      title: "Metaverse Content API",
+      title: "Scalable Notification Service",
       description:
-        "Created a flexible, headless CMS API with advanced content modeling, versioning, multi-language support and 3D asset management.",
-      icon: Code,
+        "Designed and implemented a distributed, event-driven notification service using Spring Boot, Kafka, and RabbitMQ.  Supports multiple channels (Email, SMS, Push, Webhooks) with high availability and fault tolerance. Leverages PostgreSQL/Redis for persistent storage and caching, ensuring reliable delivery and data integrity. Includes error handling, retry mechanisms, and dead-letter queues.",
+      icon: Zap, // Or a notification-specific icon
       tags: [
         "Java",
         "Spring Boot",
-        "Elasticsearch",
+        "Kafka",
+        "RabbitMQ",
         "PostgreSQL",
-        "AWS S3",
-        "ThreeJS",
+        "Redis",
+        "Email",
+        "SMS",
+        "Push Notifications",
+        "Webhooks",
       ],
-      color: "from-fuchsia-500/90 to-purple-600/90",
-      gradient:
-        "bg-gradient-radial from-fuchsia-500/20 via-fuchsia-500/5 to-transparent",
-      accent: "border-fuchsia-500/20",
-      hoverAccent: "group-hover:border-fuchsia-500/60",
-      glow: "drop-shadow-[0_0_15px_rgba(192,38,211,0.5)]",
-      stats: { content: "120TB", languages: 28, models: 46 },
-    },
-    {
-      title: "Blockchain Payment System",
-      description:
-        "Implemented a secure payment processing system with distributed ledger technology, multiple gateway integrations and AI-powered fraud detection.",
-      icon: Cpu,
-      tags: ["Go", "gRPC", "PostgreSQL", "Redis", "Kubernetes", "Blockchain"],
-      color: "from-rose-500/90 to-orange-600/90",
-      gradient:
-        "bg-gradient-radial from-rose-500/20 via-rose-500/5 to-transparent",
-      accent: "border-rose-500/20",
-      hoverAccent: "group-hover:border-rose-500/60",
-      glow: "drop-shadow-[0_0_15px_rgba(244,63,94,0.5)]",
-      stats: { transactions: "35M+", gateways: 8, success: "99.97%" },
-    },
-    {
-      title: "Neural Pipeline Framework",
-      description:
-        "Built a scalable ETL framework with built-in AI for processing and transforming massive datasets with real-time monitoring and predictive error handling.",
-      icon: Zap,
-      tags: [
-        "Python",
-        "Apache Airflow",
-        "Spark",
-        "AWS",
-        "Grafana",
-        "TensorFlow",
-      ],
-      color: "from-amber-500/90 to-yellow-600/90",
+      color: "from-amber-500/90 to-yellow-600/90", // Example
       gradient:
         "bg-gradient-radial from-amber-500/20 via-amber-500/5 to-transparent",
       accent: "border-amber-500/20",
       hoverAccent: "group-hover:border-amber-500/60",
       glow: "drop-shadow-[0_0_15px_rgba(251,191,36,0.5)]",
-      stats: { data: "200TB+", jobs: "1.2K", pipelines: 86 },
+      stats: { channels: "4+", throughput: "High", availability: "High" }, // Add specific metrics if available
+    },
+    {
+      title: "Parking Management System (Backend)",
+      description:
+        "Developed the backend for a parking management system (500+ vehicles) during an internship.  Features include intelligent spot allocation, presence-based updates, and JWT authentication.  Streamlined parking operations and improved space utilization.  Built using Spring Boot.",
+      icon: Database, //Or car icon
+      tags: ["Java", "Spring Boot", "JWT", "PostgreSQL"], // Add database if known
+      color: "from-violet-500/90 to-indigo-600/90", // Example
+      gradient:
+        "bg-gradient-radial from-violet-500/20 via-violet-500/5 to-transparent",
+      accent: "border-violet-500/20",
+      hoverAccent: "group-hover:border-violet-500/60",
+      glow: "drop-shadow-[0_0_15px_rgba(124,58,237,0.5)]",
+      stats: { vehicles: "500+", features: "3+", type: "Internship Project" }, // Example
+    },
+    {
+      title: "E-commerce Backend (Training Project)",
+      description:
+        "Built a functional e-commerce backend during Wipro training, utilizing Spring Boot. Includes user authentication, admin dashboard, product catalog, shopping cart, payment simulation, and order fulfillment.",
+      icon: Server, //Or shopping cart icon
+      tags: ["Java", "Spring Boot"],
+      color: "from-cyan-500/90 to-blue-600/90", // Example
+      gradient:
+        "bg-gradient-radial from-cyan-500/20 via-cyan-500/5 to-transparent",
+      accent: "border-cyan-500/20",
+      hoverAccent: "group-hover:border-cyan-500/60",
+      glow: "drop-shadow-[0_0_15px_rgba(6,182,212,0.5)]",
+      stats: { features: "5+", type: "Training Project" }, //Example
+    },
+    {
+      title: "More Projects Coming Soon!",
+      description:
+        "Currently working on groundbreaking projects involving quantum-resistant cryptography, interdimensional data transfer, and self-aware AI systems. Stay tuned for updates!",
+      icon: PlusCircle,
+      tags: ["Quantum Computing", "Hyperspace", "AI Singularity", "????"],
+      color: "from-gray-700/90 to-gray-900/90",
+      gradient:
+        "bg-gradient-radial from-gray-700/20 via-gray-700/5 to-transparent",
+      accent: "border-gray-700/20",
+      hoverAccent: "group-hover:border-gray-700/60",
+      glow: "drop-shadow-[0_0_15px_rgba(156,163,175,0.5)]",
+      stats: {
+        dimensions: "11+",
+        realityBends: "Infinite",
+        paradoxes: "Countless",
+      },
     },
   ];
 
@@ -272,7 +256,7 @@ export default function Projects() {
         <AnimatePresence mode="wait">
           <motion.div
             key={filterTag || "all"}
-            className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4"
+            className="flex flex-wrap gap-10"  // Changed to flex and flex-wrap
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -282,7 +266,7 @@ export default function Projects() {
             {filteredProjects.map((project, index) => (
               <motion.div
                 key={index}
-                className="relative h-full"
+                className="relative w-full md:w-[48%] xl:w-[31%] " // Responsive widths for flex items
                 variants={itemVariants}
                 whileHover={{ y: -12, scale: 1.03 }}
                 onHoverStart={() => setHoverIndex(index)}

@@ -164,10 +164,10 @@ const Contact = () => {
                     Email
                   </p>
                   <a
-                    href="mailto:alex.morgan@example.com"
+                    href="mailto:sagar.shrivastava6413@gmail.com"
                     className="text-sm font-medium text-white hover:text-indigo-200 transition-colors duration-300 relative inline-block"
                   >
-                    alex.morgan@example.com
+                    sagar.shrivastava6413@gmail.com
                     <span className="absolute bottom-0 left-0 w-0 h-px bg-indigo-400 group-hover/item:w-full transition-all duration-300"></span>
                   </a>
                 </div>
@@ -186,12 +186,12 @@ const Contact = () => {
                     LinkedIn
                   </p>
                   <a
-                    href="https://linkedin.com/in/alexmorgan"
+                    href="https://linkedin.com/in/link2sagar"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm font-medium text-white hover:text-indigo-200 transition-colors duration-300 relative inline-flex items-center group-hover/item:gap-1"
                   >
-                    <span>linkedin.com/in/alexmorgan</span>
+                    <span>linkedin.com/in/link2sagar</span>
                     <ExternalLink
                       size={14}
                       className="opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"
@@ -214,12 +214,12 @@ const Contact = () => {
                     GitHub
                   </p>
                   <a
-                    href="https://github.com/alexmorgan"
+                    href="https://github.com/sagar6413"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm font-medium text-white hover:text-indigo-200 transition-colors duration-300 relative inline-flex items-center group-hover/item:gap-1"
                   >
-                    <span>github.com/alexmorgan</span>
+                    <span>github.com/sagar6413</span>
                     <ExternalLink
                       size={14}
                       className="opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"

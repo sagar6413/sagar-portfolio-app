@@ -101,24 +101,24 @@ const Hero = () => {
 
   const techStack = [
     {
-      name: "Node.js",
+      name: "Java",
       icon: <Terminal className="w-4 h-4" />,
-      description: "Building scalable server-side applications",
+      description: "Building scalable applications",
     },
     {
-      name: "Express",
+      name: "Spring Boot",
       icon: <Code className="w-4 h-4" />,
-      description: "Fast, unopinionated web framework",
+      description: "Fast, robust backend development",
     },
     {
-      name: "MongoDB",
+      name: "SQL",
       icon: <Database className="w-4 h-4" />,
-      description: "NoSQL database for modern applications",
+      description: "SQL database for modern applications",
     },
     {
-      name: "AWS",
+      name: "No SQL",
       icon: <Cloud className="w-4 h-4" />,
-      description: "Cloud infrastructure and services",
+      description: "NoSQL database for modern applications",
     },
     {
       name: "Microservices",
@@ -131,7 +131,7 @@ const Hero = () => {
       description: "RESTful and GraphQL API development",
     },
     {
-      name: "Kubernetes",
+      name: "Docker",
       icon: <Globe className="w-4 h-4" />,
       description: "Container orchestration at scale",
     },
@@ -305,15 +305,16 @@ const Hero = () => {
   name: 'Sagar Shrivastava',
   role: 'Backend Engineer',
   skills: [
-    'Node.js', 
-    'Express', 
-    'MongoDB', 
-    'AWS', 
-    'Microservices', 
-    'API Design',
-    'Kubernetes'
-  ],
-  focus: 'Building future-proof backend solutions',
+    'Java',
+    'JavaScript',
+    'Spring Boot',
+    'ReactJS',
+    'WebSockets (STOMP)',
+    'SQL + NoSQL DB',
+    'Kafka',
+    'RabbitMQ',
+    ],
+  focus: 'Building scalable and reliable backend systems using Java and Spring technologies', 
 };
 
 // Available for new opportunities

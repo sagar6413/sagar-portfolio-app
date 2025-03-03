@@ -31,34 +31,34 @@ const Skills = () => {
   const sectionRef = useRef<HTMLElement | null>(null);
 
   // Move skillCategories declaration before useEffect
-  const skillCategories = [
+const skillCategories = [
     {
       title: "Backend",
       icon: <Server className="h-6 w-6" />,
       skills: [
         {
-          name: "Node.js",
-          icon: <Terminal className="h-4 w-4" />,
-          level: 90,
-          color: "from-emerald-500 to-green-300",
+          name: "Java",
+          icon: <Terminal className="h-4 w-4" />, // Or a Java-specific icon
+          level: 90, // Adjust based on your self-assessment
+          color: "from-orange-500 to-red-300", // Example color scheme
         },
         {
-          name: "Express",
-          icon: <Code className="h-4 w-4" />,
-          level: 85,
-          color: "from-cyan-500 to-blue-300",
+          name: "Spring Boot",
+          icon: <Code className="h-4 w-4" />, // Or a Spring Boot-specific icon
+          level: 95,
+          color: "from-green-500 to-emerald-300",
         },
         {
-          name: "NestJS",
+          name: "Spring Cloud",
           icon: <Code className="h-4 w-4" />,
           level: 80,
-          color: "from-pink-500 to-red-300",
+          color: "from-blue-500 to-cyan-300",
         },
         {
-          name: "TypeScript",
+          name: "Spring Data JPA",
           icon: <Code className="h-4 w-4" />,
           level: 85,
-          color: "from-indigo-500 to-blue-300",
+            color: "from-indigo-500 to-blue-300"
         },
       ],
     },
@@ -67,92 +67,92 @@ const Skills = () => {
       icon: <Database className="h-6 w-6" />,
       skills: [
         {
-          name: "MongoDB",
-          icon: <Database className="h-4 w-4" />,
-          level: 90,
-          color: "from-emerald-500 to-green-300",
+          name: "PostgreSQL",
+          icon: <Database className="h-4 w-4" />, // Or a PostgreSQL-specific icon
+          level: 85,
+          color: "from-blue-500 to-cyan-300",
         },
         {
-          name: "PostgreSQL",
-          icon: <Database className="h-4 w-4" />,
-          level: 85,
-          color: "from-cyan-500 to-blue-300",
+          name: "Oracle",
+          icon: <Database className="h-4 w-4" />, //Or specific Icon
+          level: 75, //Adjust
+          color: "from-red-500 to-orange-300",
+        },
+        {
+          name: "MongoDB",
+          icon: <Database className="h-4 w-4" />, // Or a MongoDB-specific icon
+          level: 70, //Adjust
+          color: "from-green-500 to-emerald-300",
         },
         {
           name: "Redis",
-          icon: <Database className="h-4 w-4" />,
-          level: 75,
-          color: "from-orange-500 to-red-300",
-        },
-        {
-          name: "Elasticsearch",
-          icon: <Database className="h-4 w-4" />,
-          level: 70,
-          color: "from-amber-500 to-yellow-300",
+          icon: <Database className="h-4 w-4" />, // Or a Redis-specific icon
+          level: 80,
+          color: "from-red-600 to-yellow-400",
         },
       ],
     },
     {
-      title: "DevOps",
+      title: "DevOps & Messaging",  // Combined to reflect resume skills
       icon: <Cloud className="h-6 w-6" />,
       skills: [
         {
           name: "Docker",
           icon: <Layers className="h-4 w-4" />,
-          level: 85,
-          color: "from-cyan-500 to-blue-300",
-        },
-        {
-          name: "Kubernetes",
-          icon: <Layers className="h-4 w-4" />,
-          level: 75,
-          color: "from-indigo-500 to-blue-300",
-        },
-        {
-          name: "AWS",
-          icon: <Cloud className="h-4 w-4" />,
           level: 80,
-          color: "from-amber-500 to-orange-300",
+          color: "from-blue-500 to-cyan-300",
         },
         {
-          name: "CI/CD",
-          icon: <GitBranch className="h-4 w-4" />,
-          level: 85,
-          color: "from-emerald-500 to-green-300",
+           name: "Kafka",
+           icon: <Layers className="h-4 w-4" />, //Consider a specific Kafka icon.
+           level: 85, //Adjust
+           color: "from-purple-500 to-indigo-300"
         },
+        {
+          name: "RabbitMQ",
+          icon: <Layers className="h-4 w-4" />, //Consider specific icon.
+          level: 70, //Adjust
+          color: "from-orange-500 to-amber-300",
+        },
+         {
+           name: "Git/GitHub",
+           icon: <GitBranch className="h-4 w-4" />,
+           level: 90,
+           color: "from-gray-500 to-zinc-300"
+         }
       ],
     },
     {
-      title: "Architecture",
+      title: "Architecture & Concepts", // Renamed for clarity
       icon: <Cpu className="h-6 w-6" />,
       skills: [
         {
           name: "Microservices",
           icon: <Layers className="h-4 w-4" />,
           level: 85,
-          color: "from-indigo-500 to-purple-300",
+          color: "from-purple-500 to-indigo-300",
         },
         {
           name: "RESTful APIs",
           icon: <Globe className="h-4 w-4" />,
           level: 90,
-          color: "from-cyan-500 to-blue-300",
+          color: "from-blue-500 to-cyan-300",
         },
         {
-          name: "GraphQL",
-          icon: <Globe className="h-4 w-4" />,
-          level: 80,
-          color: "from-rose-500 to-pink-300",
+          name: "WebSockets (STOMP)",
+          icon: <Globe className="h-4 w-4" />, // Or a more specific icon
+          level: 75, //Adjust
+          color: "from-green-500 to-emerald-300",
         },
         {
-          name: "System Design",
-          icon: <Workflow className="h-4 w-4" />,
-          level: 85,
-          color: "from-blue-500 to-indigo-300",
+            name: "Agile/Scrum",
+            icon: <Workflow className="h-4 w-4" />,
+            level: 85,
+            color: "from-yellow-500 to-amber-300"
         },
       ],
     },
-  ];
+];
 
   useEffect(() => {
     const node = sectionRef.current;
