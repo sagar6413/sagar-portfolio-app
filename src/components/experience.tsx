@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
-import { Check, ChevronRight, Sparkles } from "lucide-react";
+import { Check, Sparkles } from "lucide-react";
 import BackgroundEffects from "@/components/ui/background-effects";
 
 interface ExperienceData {
@@ -21,6 +21,7 @@ interface CompanyData {
 export default function Experience() {
   const [activeCompany, setActiveCompany] = useState("LTIMindtree");
   const [isVisible, setIsVisible] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [activeIndex, setActiveIndex] = useState(0); // Start with LTIMindtree
   const [animatingIn, setAnimatingIn] = useState(false);
   const sectionRef = useRef<HTMLDivElement | null>(null);
