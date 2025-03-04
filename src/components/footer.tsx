@@ -135,15 +135,6 @@ export default function Footer() {
             >
               Terms of Service
             </Link>
-            <motion.button
-              onClick={scrollToTop}
-              className="w-10 h-10 flex items-center justify-center rounded-full glass border border-primary/20 text-primary hover:border-primary/40 hover:shadow-md transition-all duration-300"
-              whileHover={{ scale: 1.1, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              aria-label="Scroll to top"
-            >
-              <ArrowUp size={18} />
-            </motion.button>
           </div>
         </div>
       </div>
