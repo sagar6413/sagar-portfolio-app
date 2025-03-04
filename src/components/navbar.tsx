@@ -170,7 +170,11 @@ export default function Navbar() {
           <div className="ml-4">
             <ThemeToggler />
           </div>
-          <Link href="/resume">
+          <Link
+            href="https://drive.google.com/file/d/1BZ4MftiBOb_L4n_DpVvm135Iyj11fwpJ/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Button
               className="ml-4 bg-gradient-to-br from-primary to-primary/80 hover:from-primary hover:to-primary/90 shadow-lg shadow-primary/20 backdrop-blur-sm border border-primary/20 overflow-hidden group relative"
               size="sm"
@@ -268,9 +272,15 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: navItems.length * 0.05 + 0.1 }}
                 >
-                  <Button className="w-full bg-gradient-to-br from-primary to-primary/80 hover:from-primary hover:to-primary/90 shadow-lg shadow-primary/20 backdrop-blur-sm border border-primary/20">
-                    Resume
-                  </Button>
+                  <Link
+                    href="https://drive.google.com/file/d/1BZ4MftiBOb_L4n_DpVvm135Iyj11fwpJ/view?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button className="w-full bg-gradient-to-br from-primary to-primary/80 hover:from-primary hover:to-primary/90 shadow-lg shadow-primary/20 backdrop-blur-sm border border-primary/20">
+                      Resume
+                    </Button>
+                  </Link>
                 </motion.div>
               </nav>
             </div>

@@ -201,12 +201,12 @@ const Contact = () => {
                     LinkedIn
                   </p>
                   <a
-                    href="https://linkedin.com/in/link2sagar"
+                    href="https://linkedin.com/in/linktosagar"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm font-medium text-white hover:text-indigo-200 transition-colors duration-300 relative inline-flex items-center group-hover/item:gap-1"
                   >
-                    <span>linkedin.com/in/link2sagar</span>
+                    <span>linkedin.com/in/linktosagar</span>
                     <ExternalLink
                       size={14}
                       className="opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"

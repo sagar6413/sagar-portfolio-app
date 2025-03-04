@@ -252,7 +252,7 @@ const Hero = () => {
               className="flex items-center gap-6 justify-center lg:justify-start"
             >
               <a
-                href="https://github.com/yourusername"
+                href="https://github.com/sagar6413"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors p-2 rounded-full hover:bg-primary/10 group"
@@ -260,7 +260,7 @@ const Hero = () => {
                 <Github className="w-5 h-5 group-hover:scale-110 transition-transform" />
               </a>
               <a
-                href="https://linkedin.com/in/yourusername"
+                href="https://linkedin.com/in/linktosagar"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors p-2 rounded-full hover:bg-primary/10 group"
