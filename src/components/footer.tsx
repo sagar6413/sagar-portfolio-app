@@ -1,17 +1,10 @@
 "use client";
 import Link from "next/link";
-import { Github, Linkedin, Twitter, Mail, ArrowUp } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import BackgroundEffects from "@/components/ui/background-effects";
 
 export default function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
   const socialLinks = [
     { name: "GitHub", icon: Github, href: "https://github.com" },
     { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com" },
