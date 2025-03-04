@@ -7,6 +7,13 @@ import { ThemeToggler } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Download, ExternalLink } from "lucide-react";
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -170,19 +177,40 @@ export default function Navbar() {
           <div className="ml-4">
             <ThemeToggler />
           </div>
-          <Link
-            href="https://drive.google.com/file/d/1BZ4MftiBOb_L4n_DpVvm135Iyj11fwpJ/view?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button
-              className="ml-4 bg-gradient-to-br from-primary to-primary/80 hover:from-primary hover:to-primary/90 shadow-lg shadow-primary/20 backdrop-blur-sm border border-primary/20 overflow-hidden group relative"
-              size="sm"
-            >
-              <span className="relative z-10">Resume</span>
-              <span className="absolute inset-0 bg-primary/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
-            </Button>
-          </Link>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                className="ml-4 cursor-pointer bg-gradient-to-br from-primary to-primary/80 hover:from-primary hover:to-primary/90 shadow-lg shadow-primary/20 backdrop-blur-sm border border-primary/20 overflow-hidden group relative"
+                size="sm"
+              >
+                <span className="relative z-10">Resume</span>
+                <span className="absolute inset-0 bg-primary/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem asChild>
+                <Link
+                  href="/SagarResume.pdf"
+                  download
+                  className="flex items-center  cursor-pointer"
+                >
+                  <Download className="mr-2 h-4 w-4  cursor-pointer" />
+                  Download PDF
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link
+                  href="https://drive.google.com/file/d/1BZ4MftiBOb_L4n_DpVvm135Iyj11fwpJ/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center  cursor-pointer"
+                >
+                  <ExternalLink className="mr-2 h-4 w-4  cursor-pointer" />
+                  View on Drive
+                </Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -266,22 +294,39 @@ export default function Navbar() {
                     </Link>
                   </motion.div>
                 ))}
-                <motion.div
-                  className="px-4 pt-2"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: navItems.length * 0.05 + 0.1 }}
-                >
-                  <Link
-                    href="https://drive.google.com/file/d/1BZ4MftiBOb_L4n_DpVvm135Iyj11fwpJ/view?usp=sharing"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Button className="w-full bg-gradient-to-br from-primary to-primary/80 hover:from-primary hover:to-primary/90 shadow-lg shadow-primary/20 backdrop-blur-sm border border-primary/20">
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button className="w-full  cursor-pointer bg-gradient-to-br from-primary to-primary/80 hover:from-primary hover:to-primary/90 shadow-lg shadow-primary/20 backdrop-blur-sm border border-primary/20">
                       Resume
                     </Button>
-                  </Link>
-                </motion.div>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent
+                    align="end"
+                    className="w-[calc(100vw-2rem)] mx-4"
+                  >
+                    <DropdownMenuItem asChild>
+                      <Link
+                        href="/SagarResume.pdf"
+                        download
+                        className="flex items-center  cursor-pointer"
+                      >
+                        <Download className="mr-2 h-4 w-4" />
+                        Download PDF
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link
+                        href="https://drive.google.com/file/d/1BZ4MftiBOb_L4n_DpVvm135Iyj11fwpJ/view?usp=sharing"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center  cursor-pointer"
+                      >
+                        <ExternalLink className="mr-2 h-4 w-4" />
+                        View on Drive
+                      </Link>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </nav>
             </div>
           </motion.div>
