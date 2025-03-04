@@ -66,27 +66,41 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulated form submission with success animation
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formState),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
+
       setSuccess(true);
-      console.log(formState);
+      setFormState({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
 
       // Reset success state after animation
       setTimeout(() => {
         setSuccess(false);
-        setFormState({
-          name: "",
-          email: "",
-          subject: "",
-          message: "",
-        });
       }, 3000);
-    }, 1500);
+    } catch (error) {
+      console.error("Error sending message:", error);
+      alert("Failed to send message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

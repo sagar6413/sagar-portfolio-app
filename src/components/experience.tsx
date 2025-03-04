@@ -33,6 +33,8 @@ export default function Experience() {
         if (entry.isIntersecting) {
           setIsVisible(true);
           setAnimatingIn(true);
+          // Trigger initial achievement animations
+          animateAchievements();
           setTimeout(() => setAnimatingIn(false), 2000);
           observer.unobserve(entry.target);
         }
@@ -47,13 +49,34 @@ export default function Experience() {
     };
   }, []);
 
+  const animateAchievements = () => {
+    // Reset all achievements first
+    achievementRefs.current.forEach((ref) => {
+      if (ref) {
+        ref.style.opacity = "0";
+        ref.style.transform = "translateY(20px)";
+      }
+    });
+
+    // Animate them in with delay
+    achievementRefs.current.forEach((ref, i) => {
+      if (ref) {
+        setTimeout(() => {
+          ref.style.opacity = "1";
+          ref.style.transform = "translateY(0)";
+          ref.style.transition = "all 0.5s ease-out";
+        }, 300 + i * 100);
+      }
+    });
+  };
+
   const companies: CompanyData[] = [
     {
       name: "LTIMindtree",
-      color: "#0082C8", // Example color - use official LTIMindtree color
+      color: "#0082C8",
       icon: (
         <svg
-          className="w-6 h-6"
+          className="w-5 h-5"
           viewBox="0 0 24 24"
           fill="currentColor"
           xmlns="http://www.w3.org/2000/svg"
@@ -64,10 +87,10 @@ export default function Experience() {
     },
     {
       name: "Mindtree",
-      color: "#3B5998", // Example color - use official Mindtree color
+      color: "#3B5998",
       icon: (
         <svg
-          className="w-6 h-6"
+          className="w-5 h-5"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -83,10 +106,10 @@ export default function Experience() {
     },
     {
       name: "Wipro",
-      color: "#E62020", //  Example color - use official Wipro color
+      color: "#E62020",
       icon: (
         <svg
-          className="w-6 h-6"
+          className="w-5 h-5"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -100,14 +123,13 @@ export default function Experience() {
     },
   ];
 
-
   const experiences: Record<string, ExperienceData> = {
     LTIMindtree: {
       title: "Software Engineer",
       company: "LTIMindtree",
       period: "June 2022 - Present",
       location: "Kolkata, India",
-      color: "#0082C8", // Same as company color
+      color: "#0082C8",
       achievements: [
         "Led resolution of 500+ critical production incidents (100K+ users), achieving MTTR under 8 hours.",
         "Enhanced system reliability by 15%, improving user satisfaction and service availability.",
@@ -116,7 +138,7 @@ export default function Experience() {
         "Engineered scalable REST APIs using Spring Boot and multi-level Redis caching, reducing database load by 25% and improving API response times by 40%.",
         "Resolved latency bottlenecks in a high-traffic legacy application (50K+ daily requests) via JVM tuning and garbage collection optimization, achieving 20% latency reduction.",
         "Mentored 10+ team members, reducing onboarding time from 45 to 15 days and improving team productivity by 20%.",
-        "Employed Agile/Scrum in sprint planning, reviews, and retrospectives."
+        "Employed Agile/Scrum in sprint planning, reviews, and retrospectives.",
       ],
     },
     Mindtree: {
@@ -124,12 +146,12 @@ export default function Experience() {
       company: "Mindtree",
       period: "Feb 2022 - May 2022",
       location: "Kolkata, India",
-      color: "#3B5998", // Same as company color
+      color: "#3B5998",
       achievements: [
         "Developed the backend for a parking management system (500+ vehicles) using Spring Boot.",
         "Streamlined parking operations and improved space utilization.",
         "Implemented intelligent spot allocation, presence-based updates, and JWT authentication.",
-        "Enhanced user experience, security, and operational efficiency."
+        "Enhanced user experience, security, and operational efficiency.",
       ],
     },
     Wipro: {
@@ -137,10 +159,10 @@ export default function Experience() {
       company: "Wipro",
       period: "Mar 2022 - May 2022",
       location: "Remote",
-      color: "#E62020", // Same as company color
+      color: "#E62020",
       achievements: [
         "Completed training in backend development, building a functional e-commerce backend with Spring Boot.",
-        "Developed features including user authentication, admin dashboard, product catalog, shopping cart, payment simulation, and order fulfillment."
+        "Developed features including user authentication, admin dashboard, product catalog, shopping cart, payment simulation, and order fulfillment.",
       ],
     },
   };
@@ -156,42 +178,33 @@ export default function Experience() {
     setTimeout(() => setAnimatingIn(false), 1500);
 
     // Reset the animation for achievements
-    achievementRefs.current.forEach((ref, i) => {
-      if (ref) {
-        ref.style.opacity = "0";
-        ref.style.transform = "translateY(20px)";
-        setTimeout(() => {
-          if (ref) {
-            ref.style.opacity = "1";
-            ref.style.transform = "translateY(0)";
-          }
-        }, 300 + i * 100);
-      }
-    });
+    animateAchievements();
   };
 
   return (
     <section
       id="experience"
       ref={sectionRef}
-      className="relative min-h-screen py-20 overflow-hidden bg-gradient-to-b from-background via-background to-background/95"
+      className="relative py-16 overflow-hidden bg-gradient-to-b from-background via-background to-background/95"
     >
       {/* Background Effects */}
       <BackgroundEffects canvasId="particles-experience" />
 
-      <div className="container relative z-10">
+      <div className="container max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+        {/* Section Header */}
         <div
-          className={`flex flex-col items-center mb-8 transition-all duration-1000 transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-            }`}
+          className={`flex flex-col items-center mb-12 transition-all duration-1000 transform ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+          }`}
         >
           {/* Decorative elements */}
           <div className="flex items-center justify-center mb-2">
             <div className="h-px w-8 bg-gradient-to-r from-transparent to-blue-500 opacity-70"></div>
-            <Sparkles className="w-6 h-6 mx-2 text-blue-400" />
+            <Sparkles className="w-5 h-5 mx-2 text-blue-400" />
             <div className="h-px w-8 bg-gradient-to-l from-transparent to-blue-500 opacity-70"></div>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-bold mb-2 tracking-tight">
+          <h2 className="text-3xl font-bold mb-2 tracking-tight">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-400 to-violet-500 relative">
               Work Experience
               <span
@@ -206,69 +219,62 @@ export default function Experience() {
           </h2>
 
           <div
-            className="h-1 w-24 mb-2 mt-2 rounded-full"
+            className="h-1 w-16 mb-2 mt-2 rounded-full"
             style={{
               background: `linear-gradient(90deg, transparent, ${currentColor}, transparent)`,
               boxShadow: `0 0 15 ${currentColor}`,
             }}
           ></div>
-          <p className="text-center text-gray-400 max-w-3xl text-sm">
+
+          <p className="text-center text-gray-400 max-w-2xl text-sm">
             A timeline of my professional journey across leading tech companies.
           </p>
         </div>
 
-
-        {/* Combined Timeline and Details (Flexbox) */}
-        <div className="flex flex-col md:flex-row gap-8">
-          {/* Company timeline - now part of the flex layout */}
+        {/* Main content - Experience timeline and details */}
+        <div className="flex flex-col gap-6">
+          {/* Company selector - horizontal on mobile, vertical on desktop */}
           <div
-            className={`flex-shrink-0 w-full md:w-1/3 transition-all duration-1000 transform ${isVisible
+            className={`transition-all duration-1000 transform ${
+              isVisible
                 ? "translate-x-0 opacity-100"
                 : "-translate-x-10 opacity-0"
-              }`}
+            }`}
             style={{ transitionDelay: "200ms" }}
-
           >
-            <div
-              className="backdrop-blur-xl rounded-2xl border px-2 py-1  relative"
-              style={{
-                borderColor: "rgba(255, 255, 255, 0.03)",
-                background:
-                  "linear-gradient(135deg, rgba(10, 10, 15, 0.7), rgba(15, 15, 25, 0.3))",
-                boxShadow: "0 20px 50px -20px rgba(0, 0, 0, 0.5)",
-              }}
-            >
+            <div>
               {/* Timeline accent line (for larger screens) */}
-              <div className="absolute -left-1 top-0 w-1 h-full overflow-hidden rounded-full hidden md:block">
-                <div className="absolute inset-0 bg-gradient-to-b from-blue-800/20 via-indigo-500/20 to-purple-800/20"></div>
+              {/* <div className="absolute top-0 left-2 w-[98%] h-1 overflow-hidden rounded-full">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-800/20 via-indigo-500/20 to-purple-800/20" />
                 <div
-                  className="absolute w-full h-24 transition-all duration-700 ease-out"
+                  className="absolute h-full transition-all duration-700 ease-out"
                   style={{
-                    background: `linear-gradient(to bottom, transparent, ${currentColor}, transparent)`,
+                    width: `${100 / companies.length}%`,
+                    background: `linear-gradient(to right, transparent, ${currentColor}, transparent)`,
                     boxShadow: `0 0 15px ${currentColor}`,
-                    transform: `translateY(${activeIndex * 100}%)`,  //  Adjust for new flex layout
+                    transform: `translateX(${activeIndex * 100}%)`,
                   }}
-                ></div>
-              </div>
-              {/* Companies list */}
+                />
+              </div> */}
 
-              <div className="flex md:flex-col flex-wrap md:flex-nowrap gap-4  md:gap-0">
+              <div className="flex gap-3 justify-center items-center ">
                 {companies.map((company, index) => (
                   <div
                     key={company.name}
-                    className={`flex items-center gap-2 p-2 mb-2 rounded-xl cursor-pointer transition-all duration-500 relative z-10  w-1/3 md:w-auto ${activeCompany === company.name
+                    className={`flex items-center gap-2 p-2 rounded-lg cursor-pointer transition-all duration-300 ${
+                      activeCompany === company.name
                         ? "bg-gray-900/70"
                         : "hover:bg-gray-900/30"
-                      }`}
+                    }`}
                     style={{
                       backdropFilter: "blur(16px)",
-                      borderLeft:
+                      borderBottom:
                         activeCompany === company.name
-                          ? `2px solid ${company.color} md:block hidden` // Conditionally render
+                          ? `2px solid ${company.color}`
                           : "2px solid transparent",
                       transform:
                         activeCompany === company.name
-                          ? "scale(1.02)"
+                          ? "scale(1.01)"
                           : "scale(1)",
                     }}
                     onClick={() => handleCompanyClick(company.name, index)}
@@ -276,7 +282,7 @@ export default function Experience() {
                     {/* Active company indicator */}
                     {activeCompany === company.name && (
                       <div
-                        className="absolute inset-0 rounded-xl opacity-20"
+                        className="absolute inset-0 rounded-lg opacity-20"
                         style={{
                           background: `radial-gradient(circle at left, ${company.color}30, transparent 70%)`,
                           animation: "pulse 3s ease-in-out infinite",
@@ -285,7 +291,7 @@ export default function Experience() {
                     )}
 
                     <div
-                      className={`p-2 rounded-full transition-all duration-300 relative`}
+                      className={`p-2 rounded-full transition-all duration-300 relative flex-shrink-0`}
                       style={{
                         background:
                           activeCompany === company.name
@@ -293,11 +299,10 @@ export default function Experience() {
                             : "rgba(20, 20, 30, 0.5)",
                         boxShadow:
                           activeCompany === company.name
-                            ? `0 0 15px ${company.color}60`
+                            ? `0 0 10px ${company.color}60`
                             : "none",
                       }}
                     >
-                      {/* Icon glow effect */}
                       {activeCompany === company.name && (
                         <div
                           className="absolute inset-0 rounded-full opacity-60"
@@ -309,33 +314,9 @@ export default function Experience() {
                       )}
                       {company.icon}
                     </div>
-                    <div className="flex-1 hidden md:block">
+                    <div className="block">
                       <span
-                        className={`font-medium text-sm transition-all duration-300 ${activeCompany === company.name ? "" : "text-gray-400"
-                          }`}
-                        style={{
-                          color:
-                            activeCompany === company.name ? company.color : "",
-                          textShadow:
-                            activeCompany === company.name
-                              ? `0 0 8px ${company.color}50`
-                              : "none",
-                        }}
-                      >
-                        {company.name}
-                      </span>
-                      <div
-                        className={`text-xs text-gray-500 transition-all duration-500 overflow-hidden ${activeCompany === company.name
-                            ? "max-h-12 opacity-100 mt-1"
-                            : "max-h-0 opacity-0"
-                          }`}
-                      >
-                        {experiences[company.name].period}
-                      </div>
-                    </div>
-                    <div className="flex md:hidden items-center">  {/* Show on mobile only */}
-                    <span
-                        className={`text-sm font-medium transition-all duration-300`}
+                        className="text-sm font-medium"
                         style={{
                           color:
                             activeCompany === company.name
@@ -350,32 +331,6 @@ export default function Experience() {
                         {company.name}
                       </span>
                     </div>
-
-                    {/* Status indicator + arrow */}
-                    <div className="flex items-center md:block hidden">
-                      <div
-                        className={`w-2 h-2 rounded-full mr-2 transition-all duration-300 `}
-                        style={{
-                          background:
-                            activeCompany === company.name
-                              ? company.color
-                              : "rgba(255, 255, 255, 0.2)",
-                          boxShadow:
-                            activeCompany === company.name
-                              ? `0 0 10px ${company.color}`
-                              : "none",
-                        }}
-                      ></div>
-                      <ChevronRight
-                        className={`w-4 h-4 transform transition-all duration-300 ${activeCompany === company.name
-                            ? "opacity-100"
-                            : "opacity-0"
-                          }`}
-                        style={{
-                          color: company.color,
-                        }}
-                      />
-                    </div>
                   </div>
                 ))}
               </div>
@@ -384,19 +339,20 @@ export default function Experience() {
 
           {/* Experience details card */}
           <div
-            className={`w-full md:w-2/3 transition-all duration-1000 transform ${isVisible
+            className={`flex-1 transition-all duration-1000 transform ${
+              isVisible
                 ? "translate-x-0 opacity-100"
                 : "translate-x-10 opacity-0"
-              }`}
+            }`}
             style={{ transitionDelay: "400ms" }}
           >
             <div
-              className="backdrop-blur-xl rounded-2xl border p-4 relative overflow-hidden"
+              className="backdrop-blur-xl rounded-xl border p-5 relative overflow-hidden h-full"
               style={{
                 borderColor: "rgba(255, 255, 255, 0.03)",
                 background:
                   "linear-gradient(135deg, rgba(10, 10, 15, 0.7), rgba(15, 15, 25, 0.3))",
-                boxShadow: "0 20px 50px -20px rgba(0, 0, 0, 0.5)",
+                boxShadow: "0 10px 30px -10px rgba(0, 0, 0, 0.5)",
               }}
             >
               {/* Content highlight effects */}
@@ -418,7 +374,7 @@ export default function Experience() {
 
               {/* Holographic decorative lines */}
               <div
-                className="absolute top-0 left-0 w-full h-1"
+                className="absolute top-0 left-0 w-full h-px"
                 style={{
                   background: `linear-gradient(90deg, transparent, ${currentColor}, transparent)`,
                   opacity: "0.7",
@@ -427,27 +383,8 @@ export default function Experience() {
                 }}
               />
 
-              <div
-                className="absolute bottom-0 left-0 w-full h-1"
-                style={{
-                  background: `linear-gradient(90deg, transparent, ${currentColor}, transparent)`,
-                  opacity: "0.4",
-                  boxShadow: `0 0 10px ${currentColor}`,
-                  animation: "scanlineHorizontal 12s infinite linear reverse",
-                }}
-              />
-
-              {/* Circular holo decoration */}
-              <div
-                className="absolute top-4 right-4 w-32 h-32 rounded-full opacity-10"
-                style={{
-                  border: `1px solid ${currentColor}`,
-                  animation: "rotateHolo 20s linear infinite",
-                }}
-              />
-
-              <div className="mb-4 relative">
-                {/* Company name with futuristic decoration */}
+              {/* Job title and company */}
+              <div className="mb-4">
                 <div className="flex flex-wrap items-baseline gap-2 relative">
                   {animatingIn && (
                     <div
@@ -459,23 +396,18 @@ export default function Experience() {
                     ></div>
                   )}
 
-                  <h2
-                    className="text-xl md:text-2xl font-bold tracking-tight transition-all duration-500"
+                  <h3
+                    className="text-xl font-bold tracking-tight transition-all duration-500"
                     style={{
                       color: currentColor,
                       textShadow: `0 0 10px ${currentColor}50`,
                     }}
                   >
                     {currentExperience.title}
-                  </h2>
-                  <div className="text-xl md:text-2xl font-light text-gray-400">
+                  </h3>
+                  <div className="text-lg font-light text-gray-400">
                     @{" "}
-                    <span
-                      className="font-semibold"
-                      style={{
-                        textShadow: `0 0 15px ${currentColor}30`,
-                      }}
-                    >
+                    <span className="font-medium">
                       {currentExperience.company}
                     </span>
                   </div>
@@ -483,7 +415,7 @@ export default function Experience() {
 
                 {/* Company details with holographic UI feel */}
                 <div
-                  className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-2 text-gray-400 text-sm bg-white/5 backdrop-blur-lg px-2 py-1.5 rounded-lg border border-white/5"
+                  className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-3 text-gray-400 text-sm bg-white/5 backdrop-blur-lg px-3 py-2 rounded-lg border border-white/5"
                   style={{
                     boxShadow: `inset 0 0 20px rgba(0,0,0,0.2), 0 0 1px ${currentColor}30`,
                   }}
@@ -520,52 +452,52 @@ export default function Experience() {
                     <span>{currentExperience.location}</span>
                   </div>
                 </div>
+              </div>
 
-                {/* Achievements list with animated entries */}
-                <div className="space-y-2 mt-4 relative">
-                  {currentExperience.achievements.map((achievement, index) => (
+              {/* Achievements list with animated entries */}
+              <div className="space-y-3 my-5 ">
+                {currentExperience.achievements.map((achievement, index) => (
+                  <div
+                    key={index}
+                    ref={(el) => {
+                      achievementRefs.current[index] = el;
+                      return undefined;
+                    }}
+                    className="flex gap-3 p-3 rounded-lg border border-white/5 bg-white/5 backdrop-blur-lg transition-all duration-500 opacity-0 translate-y-5"
+                    style={{
+                      boxShadow: `inset 0 0 15px ${currentColor}10, 0 2px 4px rgba(0,0,0,0.1)`,
+                      animationDelay: `${index * 100 + 300}ms`,
+                    }}
+                  >
+                    <Check
+                      className="w-4 h-4 flex-shrink-0 mt-0.5"
+                      style={{ color: currentColor }}
+                    />
+
+                    <p className="text-gray-300 text-sm leading-relaxed">
+                      {achievement}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Floating particles overlay */}
+              <div className="absolute inset-0 pointer-events-none">
+                {Array(10)
+                  .fill(0)
+                  .map((_, i) => (
                     <div
-                      key={index}
-                      ref={(el) => {
-                        achievementRefs.current[index] = el;
-                        return undefined;
-                      }}
-                      className="flex items-center gap-4 p-2 rounded-xl border border-white/5 bg-white/5 backdrop-blur-lg transition-all duration-500 opacity-0 translate-y-5"
+                      key={i}
+                      className="absolute w-0.5 h-0.5 rounded-full animate-float"
                       style={{
-                        boxShadow: `inset 0 0 15px ${currentColor}10, 0 2px 4px rgba(0,0,0,0.1)`,
-                        animationDelay: `${index * 100 + 300}ms`,
+                        background: currentColor,
+                        top: `${Math.random() * 100}%`,
+                        left: `${Math.random() * 100}%`,
+                        animationDelay: `${i * 0.5}s`,
+                        opacity: 0.3,
                       }}
-                    >
-                      <Check
-                        className="w-4 h-4"
-                        style={{ color: currentColor }}
-                      />
-
-                      <p className="text-gray-300 text-sm leading-relaxed">
-                        {achievement}
-                      </p>
-                    </div>
+                    ></div>
                   ))}
-                </div>
-
-                {/* Floating particles overlay */}
-                <div className="absolute inset-0 pointer-events-none">
-                  {Array(20)
-                    .fill(0)
-                    .map((_, i) => (
-                      <div
-                        key={i}
-                        className="absolute w-0.5 h-0.5 rounded-full animate-float"
-                        style={{
-                          background: currentColor,
-                          top: `${Math.random() * 100}%`,
-                          left: `${Math.random() * 100}%`,
-                          animationDelay: `${i * 0.5}s`,
-                          opacity: 0.3,
-                        }}
-                      ></div>
-                    ))}
-                </div>
               </div>
             </div>
           </div>

@@ -283,7 +283,7 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.9 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="w-1/2  "
+            className="w-full lg:w-1/2"
           >
             <div className="relative backdrop-blur-xl bg-background/20 rounded-2xl border border-primary/20 shadow-2xl shadow-primary/10 overflow-hidden hover:shadow-primary/20 transition-shadow duration-300 hover:border-primary/30">
               <div className="flex items-center justify-between px-4 py-3 bg-muted/30 backdrop-blur-md border-b border-primary/10">
@@ -299,7 +299,7 @@ const Hero = () => {
               </div>
 
               {/* Terminal Window with Typing Effect */}
-              <pre className="p-2 text-left overflow-x-auto text-sm backdrop-blur-sm leading-none">
+              <pre className="px-4 py-4 text-left overflow-x-auto text-xs sm:text-sm leading-snug">
                 <TypingEffect
                   text={`const developer = {
   name: 'Sagar Shrivastava',
@@ -337,7 +337,7 @@ developer.contact();`}
             </div>
 
             {/* Tech Stack Pills */}
-            <div className="flex flex-wrap justify-center gap-2 mt-6 z-20 w-full">
+            <div className="flex flex-row flex-wrap justify-center gap-2 mt-6 z-20 w-full max-w-[90vw] mx-auto">
               {techStack.map((tech, index) => (
                 <motion.div
                   key={tech.name}
@@ -347,11 +347,11 @@ developer.contact();`}
                     y: isVisible ? 0 : 20,
                   }}
                   transition={{ duration: 0.3, delay: 0.7 + index * 0.1 }}
-                  className="relative"
+                  className="relative max-w-[200px] sm:max-w-none mx-auto"
                   onMouseEnter={() => setHoveredSkill(tech.name)}
                   onMouseLeave={() => setHoveredSkill(null)}
                 >
-                  <div className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-background/70 backdrop-blur-md border border-primary/20 text-xs font-medium shadow-lg shadow-primary/5 hover:shadow-primary/20 hover:border-primary/40 transition-all duration-300 hover:bg-background/90 group">
+                  <div className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-background/70 backdrop-blur-md border border-primary/20 text-xs font-medium shadow-lg shadow-primary/5 hover:shadow-primary/20 hover:border-primary/40 transition-all duration-300 hover:bg-background/90 group whitespace-nowrap">
                     <span className="text-primary opacity-80 group-hover:opacity-100">
                       {tech.icon}
                     </span>
@@ -368,7 +368,7 @@ developer.contact();`}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 5 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute -top-12 left-1/2 transform -translate-x-1/2 px-3 py-2 bg-background/90 backdrop-blur-md border border-primary/20 rounded-lg shadow-lg text-xs whitespace-nowrap z-50"
+                        className="absolute -top-10 sm:-top-12 left-1/2 transform -translate-x-1/2 px-3 py-2 bg-background/90 backdrop-blur-md border border-primary/20 rounded-lg shadow-lg text-xs whitespace-nowrap z-50"
                       >
                         {tech.description}
                         <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 rotate-45 w-2 h-2 bg-background/90 border-r border-b border-primary/20" />

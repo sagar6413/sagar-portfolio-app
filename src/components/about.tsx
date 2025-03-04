@@ -44,7 +44,7 @@ const About = () => {
         "Architecting robust, scalable backend systems using Java, Spring Boot, and related technologies (Spring Cloud, Spring Data JPA).  Experience with both monolithic and microservices architectures.",
     },
     {
-      icon: Database,  // Or icons for specific databases like PostgreSQL, MongoDB
+      icon: Database, // Or icons for specific databases like PostgreSQL, MongoDB
       title: "Database Design & Management",
       description:
         "Designing and implementing efficient database schemas using PostgreSQL, Oracle, and MongoDB.  Proficient in optimizing queries, ensuring data integrity, and utilizing caching strategies (Redis).",
@@ -139,19 +139,19 @@ const About = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
               transition={{ duration: 0.6, delay: 0.7 }}
-              className="flex flex-wrap gap-2 mt-4"
+              className="hidden md:flex flex-wrap gap-2 mt-4"
             >
               {[
                 "Java",
-                "Spring Boot",              
+                "Spring Boot",
                 "SQL + NoSQL DB",
-                "Redis", 
+                "Redis",
                 "Microservices Architecture",
                 "Kafka",
                 "Docker",
                 "JWT/ OAuth2 Authentication",
                 "Spring Cloud", // Or more specific: "Spring Cloud (Config, Gateway)"
-                "Agile/Scrum" // Methodology is a valuable skill
+                "Agile/Scrum", // Methodology is a valuable skill
               ].map((skill, index) => (
                 <Badge
                   key={index}
@@ -165,7 +165,7 @@ const About = () => {
           </motion.div>
 
           {/* Feature Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="hidden sm:grid grid-cols-1 sm:grid-cols-2 gap-4">
             {features.map((feature, index) => (
               <FeatureCard
                 key={index}
