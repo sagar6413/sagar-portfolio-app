@@ -81,7 +81,8 @@ export default function Projects() {
 
   const projects = [
     {
-      title: "Real-Time Chat Application",
+      href : "/projects/whispr",
+      title: "Whispr - A Real-Time Chat Application",
       description:
         "Developed a scalable real-time chat application backend using Spring Boot and WebSockets (STOMP). Features include message delivery guarantees (RabbitMQ), presence status, group chat, and real-time notifications. Implemented secure API access and authentication with JWT/OAuth2.",
       icon: Code,
@@ -104,6 +105,7 @@ export default function Projects() {
       stats: { users: "Simulated", messages: "High Volume", latency: "Low" },
     },
     {
+      href : "/projects/whispr",
       title: "Scalable Notification Service",
       description:
         "Designed and implemented a distributed, event-driven notification service using Spring Boot, Kafka, and RabbitMQ. Supports multiple channels (Email, SMS, Push, Webhooks) with high availability and fault tolerance. Leverages PostgreSQL/Redis for persistent storage and caching, ensuring reliable delivery and data integrity.",
@@ -129,6 +131,7 @@ export default function Projects() {
       stats: { channels: "4+", throughput: "High", availability: "High" },
     },
     {
+      href : "/projects/whispr",
       title: "Parking Management System (Backend)",
       description:
         "Developed the backend for a parking management system (500+ vehicles) during an internship. Features include intelligent spot allocation, presence-based updates, and JWT authentication. Streamlined parking operations and improved space utilization. Built using Spring Boot.",
@@ -143,6 +146,7 @@ export default function Projects() {
       stats: { vehicles: "500+", features: "3+", type: "Internship Project" },
     },
     {
+      href : "/projects/whispr",
       title: "E-commerce Backend (Training Project)",
       description:
         "Built a functional e-commerce backend during Wipro training, utilizing Spring Boot. Includes user authentication, admin dashboard, product catalog, shopping cart, payment simulation, and order fulfillment.",
@@ -157,6 +161,7 @@ export default function Projects() {
       stats: { features: "5+", type: "Training Project" },
     },
     {
+      href : "/projects/whispr",
       title: "More Projects Coming Soon!",
       description:
         "Currently working on groundbreaking projects involving quantum-resistant cryptography, interdimensional data transfer, and self-aware AI systems. Stay tuned for updates!",
@@ -413,7 +418,7 @@ export default function Projects() {
                           View Code
                         </motion.a>
                         <motion.a
-                          href="#"
+                          href={project.href}
                           className="flex items-center text-xs font-medium px-2.5 py-1.5 rounded-lg bg-gradient-to-r from-indigo-500/20 to-indigo-600/20 border border-indigo-500/30 text-indigo-300 hover:text-white transition-colors"
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.98 }}
